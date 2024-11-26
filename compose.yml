@@ -1,0 +1,28 @@
+services:
+    web:
+        build: servidor
+        volumes:
+            - ./servidor/confs/vhost1.conf:/etc/apache2/sites-enabled/vhost1.conf
+            - ./servidor/confs/vhost2.conf:/etc/apache2/sites-enabled/vhost2.conf
+            - ./ficheiros:/web
+        networks:
+            rede_test:
+                aliases:
+                    - server1.lan
+                    - server2.lan
+                    - www.server1.lan
+                    - www.server2.lan
+                    - www.proba.lan
+                    - proba.lan
+
+    cliente:
+        build: cliente
+        networks:
+            - rede_test
+        environment:
+            - DISPLAY=${DISPLAY}
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
+
+networks:
+    rede_test:
