@@ -1,5 +1,6 @@
 services:
     web:
+        hostname: web
         build: servidor
         volumes:
             - ./servidor/confs/vhost1.conf:/etc/apache2/sites-enabled/vhost1.conf
@@ -16,6 +17,7 @@ services:
                     - proba.lan
 
     cliente:
+        hostname: cliente
         build: cliente
         networks:
             - rede_test
