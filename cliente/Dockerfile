@@ -4,4 +4,4 @@ RUN apt update &&  apt install -y net-tools procps most iproute2  iputils-ping d
 
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["firefox"]

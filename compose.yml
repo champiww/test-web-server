@@ -3,9 +3,10 @@ services:
         hostname: web
         build: servidor
         volumes:
+            - ./ficheiros:/web
             - ./servidor/confs/vhost1.conf:/etc/apache2/sites-enabled/vhost1.conf
             - ./servidor/confs/vhost2.conf:/etc/apache2/sites-enabled/vhost2.conf
-            - ./ficheiros:/web
+            - ./ficheiros/alias:/srv
         networks:
             rede_test:
                 aliases:
